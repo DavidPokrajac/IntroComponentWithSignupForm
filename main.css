@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: url("./images/bg-intro-desktop.png") no-repeat top left/cover, hsl(0, 100%, 74%);
+  color: white;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  width: 90%;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+form {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 0 rgba(62, 60, 73, 0.3);
+}
+form input {
+  border: 1px solid hsl(246, 25%, 77%);
+  border-radius: 5px;
+  font-family: inherit;
+  color: hsl(249, 10%, 26%);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75em 1.75em;
+  display: inline-block;
+  width: 100%;
+}
+form input::-moz-placeholder {
+  color: #555365;
+}
+form input::placeholder {
+  color: #555365;
+}
+form input[type=submit] {
+  text-transform: uppercase;
+  background: hsl(154, 59%, 51%);
+  color: white;
+  font-weight: 500;
+}
+form p {
+  color: hsl(246, 25%, 77%);
+  font-size: 75%;
+  text-align: center;
+}
+form p span {
+  color: hsl(0, 100%, 74%);
+  font-weight: 700;
+}
+
+.ctaBtn {
+  background: hsl(248, 32%, 49%);
+  color: inherit;
+  border: none;
+  font-family: inherit;
+}

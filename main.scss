@@ -1,0 +1,74 @@
+@use "sass:color";
+@import "fontFamily", "variables";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: $defaultFontSize;
+}
+
+body {
+    margin: 0;
+    font-family: $fontFamily;
+    background: url('./images/bg-intro-desktop.png') no-repeat top left/cover, $red;
+    color: lighten($grayishBlue, 90);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    width: 90%;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 0 rgba($darkBlue, 0.3);
+    input {
+        border: 1px solid $grayishBlue;
+        border-radius: 5px;
+        font-family: inherit;
+        color: $darkBlue;
+        font-weight: 700;
+        font-size: 1.1rem;
+        padding: 0.75em 1.75em;
+        display: inline-block;
+        width: 100%;
+        &::placeholder {
+            color: lighten($darkBlue, 10);
+        }
+        &[type="submit"] {
+            text-transform: uppercase;
+            background: $green;
+            color: white;
+            font-weight: 500;
+        }
+    }
+    p {
+        color: $grayishBlue;
+        font-size: 75%;
+        text-align: center;
+        span {
+            color: $red;
+            font-weight: 700;
+        }
+    }
+}
+
+.ctaBtn {
+    background: $blue;
+    color: inherit;
+    border: none;
+    font-family: inherit;
+}
