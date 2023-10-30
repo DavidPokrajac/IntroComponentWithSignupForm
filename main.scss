@@ -1,5 +1,5 @@
 @use "sass:color";
-@import "fontFamily", "variables";
+@import "fontFamily", "variables", "mixins";
 
 *,
 *::before,
@@ -22,37 +22,55 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 900px;
+    max-width: 1200px;
     width: 90%;
+    margin: 0 auto;
+    section {
+        flex: 1 1 50%;
+        &:first-of-type {
+            padding-right: 2em;
+        }
+    }
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 3.25rem;
+    line-height: 1.1em;
 }
 
 form {
     background: white;
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 10px;
-    box-shadow: 0 10px 0 rgba($darkBlue, 0.3);
+    box-shadow: 0 7px 0 rgba($darkBlue, 0.3);
     input {
         border: 1px solid $grayishBlue;
         border-radius: 5px;
         font-family: inherit;
         color: $darkBlue;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 1.1rem;
         padding: 0.75em 1.75em;
         display: inline-block;
         width: 100%;
         &::placeholder {
-            color: lighten($darkBlue, 10);
+            color: darken($darkBlue, 50%);
+        }
+        &:focus {
+            outline: 1px solid $blue;
         }
         &[type="submit"] {
             text-transform: uppercase;
             background: $green;
-            color: white;
             font-weight: 500;
+            box-shadow: inset 0px 0px 5px rgba($darkBlue, 0.2),
+            inset 0px -4px 0 rgba($darkBlue, 0.2);
+            padding: 1.125rem 0;
+            color: white;
+            &:hover {
+                background: lighten($green, 10%);
+                cursor: pointer;
+            }
         }
     }
     p {
@@ -67,8 +85,59 @@ form {
 }
 
 .ctaBtn {
+    @include buttonStyles;
     background: $blue;
-    color: inherit;
-    border: none;
     font-family: inherit;
+    padding: 0.75em 1.75em;
+    box-shadow: 0 7px 0 rgba($darkBlue, 0.3);
+    margin-bottom: 2em;
+}
+
+@for $i from 1 through 4 {
+    form {
+        input {
+            &:nth-of-type(#{$i}) {
+                margin-bottom: 1.250em;
+            }
+        }
+    }
+}
+
+.add {
+    outline: 2px solid $red;
+}
+
+@media (max-width: 600px) {
+    body {
+        background: url('./images/bg-intro-mobile.png') no-repeat top left/cover, $red;
+    }
+
+    main {
+        flex-direction: column;
+        section {
+            &:first-of-type {
+                padding-right: 0;
+            }
+        }
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        width: 75%;
+        margin: 0 auto;
+        line-height: 1.3em;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    form {
+        padding: 1.25em;
+        input {
+            font-size: 1rem;
+            padding: 0.75em 1em;
+        }
+    }
 }
