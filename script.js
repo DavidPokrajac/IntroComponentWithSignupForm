@@ -1,25 +1,38 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
     const submitForm = document.querySelector("form");
-    const firstNameInput = document.getElementById("first-name");
-    const lastNameInput = document.getElementById("last-name");
-    const emailAddress = document.getElementById("email-address");
-    const password = document.getElementById("password");
+    let labels = document.querySelectorAll("label");
     let inputs = document.querySelectorAll("input[placeholder]");
+    let warningMessage, img;
+
+    Array.from(labels).forEach(label => {
+        warningMessage = document.createElement("span");
+        img = document.createElement('img');
+        warningMessage.classList.add("warningmessage");
+        label.append(warningMessage);
+        label.append(img);
+    })
+
     Array.from(inputs).forEach(input => {
         input.addEventListener("input", (e) => {
-            console.log(e.target.value);
             input.value = e.target.value;
-        })
+        });
     })
 
     submitForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        console.log("Hey");
         Array.from(inputs).forEach(input => {
             if(!input.value) {
                 input.classList.add('add');
-            } else {
+                input.nextElementSibling.textContent = errorMessage(input.placeholder);
+                input.nextElementSibling.nextElementSibling.src = './images/icon-error.svg';
+                if(input.id === 'email-address') {
+                    input.nextElementSibling.textContent = 'Looks like this is not an email';
+                }
+            }
+            else {
                 input.classList.remove('add');
+                input.nextElementSibling.textContent = '';
+                input.nextElementSibling.nextElementSibling.src = '';
             }
         })
     });

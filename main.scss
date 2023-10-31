@@ -16,6 +16,7 @@ body {
     font-family: $fontFamily;
     background: url('./images/bg-intro-desktop.png') no-repeat top left/cover, $red;
     color: lighten($grayishBlue, 90);
+    padding: 10% 0;
 }
 
 main {
@@ -68,7 +69,7 @@ form {
             padding: 1.125rem 0;
             color: white;
             &:hover {
-                background: lighten($green, 10%);
+                background: lighten($green, 20%);
                 cursor: pointer;
             }
         }
@@ -97,7 +98,7 @@ form {
     form {
         input {
             &:nth-of-type(#{$i}) {
-                margin-bottom: 1.250em;
+                margin-bottom: 1em;
             }
         }
     }
@@ -105,6 +106,25 @@ form {
 
 .add {
     outline: 2px solid $red;
+}
+
+label {
+    position: relative;
+    img {
+        position: absolute;
+        right: 5%;
+        top: 0;
+    }
+}
+
+.warningmessage {
+    color: $red;
+    display: block;
+    text-align: right;
+    transform: translateY(-10px);
+    font-style: italic;
+    font-size: 0.85rem;
+    margin-bottom: 0.7em;
 }
 
 @media (max-width: 600px) {
@@ -139,5 +159,20 @@ form {
             font-size: 1rem;
             padding: 0.75em 1em;
         }
+    }
+
+    @for $i from 1 through 4 {
+        form {
+            input {
+                &:nth-of-type(#{$i}) {
+                    margin-bottom: 0.8em;
+                }
+            }
+        }
+    }
+
+    .ctaBtn {
+        padding: 1em 3em;
+        line-height: 1.5em;
     }
 }
